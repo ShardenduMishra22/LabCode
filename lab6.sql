@@ -1,42 +1,42 @@
--- CREATE DATABASE SocialMedia;
+CREATE DATABASE SocialMedia;
 
--- USE SocialMedia;
+USE SocialMedia;
 
--- CREATE TABLE Users (
---     user_id INT PRIMARY KEY AUTO_INCREMENT,
---     username VARCHAR(50) UNIQUE NOT NULL,
---     email VARCHAR(100) UNIQUE NOT NULL,
---     signup_date DATE NOT NULL
--- );
+CREATE TABLE Users (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    signup_date DATE NOT NULL
+);
 
--- CREATE TABLE Posts (
---     post_id INT PRIMARY KEY AUTO_INCREMENT,
---     user_id INT NOT NULL,
---     post_date DATETIME NOT NULL,
---     content TEXT NOT NULL,
---     FOREIGN KEY (user_id) REFERENCES Users (user_id) ON DELETE CASCADE
--- );
+CREATE TABLE Posts (
+    post_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    post_date DATETIME NOT NULL,
+    content TEXT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES Users (user_id) ON DELETE CASCADE
+);
 
--- CREATE TABLE Likes (
---     like_id INT PRIMARY KEY AUTO_INCREMENT,
---     post_id INT NOT NULL,
---     user_id INT NOT NULL,
---     like_date DATETIME NOT NULL,
---     FOREIGN KEY (post_id) REFERENCES Posts (post_id) ON DELETE CASCADE,
---     FOREIGN KEY (user_id) REFERENCES Users (user_id) ON DELETE CASCADE
--- );
+CREATE TABLE Likes (
+    like_id INT PRIMARY KEY AUTO_INCREMENT,
+    post_id INT NOT NULL,
+    user_id INT NOT NULL,
+    like_date DATETIME NOT NULL,
+    FOREIGN KEY (post_id) REFERENCES Posts (post_id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES Users (user_id) ON DELETE CASCADE
+);
 
--- CREATE TABLE Comments (
---     comment_id INT PRIMARY KEY AUTO_INCREMENT,
---     post_id INT NOT NULL,
---     user_id INT NOT NULL,
---     comment_date DATETIME NOT NULL,
---     content TEXT NOT NULL,
---     FOREIGN KEY (post_id) REFERENCES Posts (post_id) ON DELETE CASCADE,
---     FOREIGN KEY (user_id) REFERENCES Users (user_id) ON DELETE CASCADE
--- );
+CREATE TABLE Comments (
+    comment_id INT PRIMARY KEY AUTO_INCREMENT,
+    post_id INT NOT NULL,
+    user_id INT NOT NULL,
+    comment_date DATETIME NOT NULL,
+    content TEXT NOT NULL,
+    FOREIGN KEY (post_id) REFERENCES Posts (post_id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES Users (user_id) ON DELETE CASCADE
+);
 
--- SHOW TABLES;
+SHOW TABLES;
 
 -- 7. Insert Sample Data into Users Table
 INSERT INTO
